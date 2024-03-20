@@ -5,6 +5,7 @@ import styled from "styled-components";
 import logo from "../assets/logo.png";
 import DiaryDisplay from "./DiaryDisplay";
 import { message } from "antd";
+import { useLocation } from 'react-router-dom';
 
 
 const dummyData = JSON.parse(
@@ -15,6 +16,11 @@ function DiaryMain() {
   const [data, setData] = useState(dummyData);
   const [isLoading, setIsLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+
+  // location.state 에서 파라미터 취득
+  const location = useLocation();
+  const selDate = location.state.selDate;
+  console.log('selDate', selDate);
 
   const handleClickAPICall = async (userInput) => {
     console.log(userInput);
