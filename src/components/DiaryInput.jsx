@@ -6,9 +6,6 @@ import { FileImageOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 
-
-
-
 // import html2canvas from "html2canvas";
 
 const { TextArea } = Input;
@@ -113,16 +110,8 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi }) => {
       
       <ButtonContainer>
         <Button onClick={selectMusic}>노래 선택</Button>
-        <Button loading={isLoading} onClick={handleClick}>
-          GPT 회고록을 작성해줘!
-        </Button>
-        <Button
-          icon={<FileImageOutlined />}
-          loading={isLoading}
-          onClick={captureAndDownload}
-        >
-          저장
-        </Button>
+        <Button loading={isLoading} onClick={handleClick}>GPT 회고록을 작성해줘!</Button>
+        <Button icon={<FileImageOutlined />}loading={isLoading}onClick={captureAndDownload}>저장 </Button>
       </ButtonContainer>
       
       <canvas id="canvas" style={{ display: "none" }}></canvas>

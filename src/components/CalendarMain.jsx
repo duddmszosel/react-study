@@ -145,11 +145,11 @@ function CalendarMain() {
 
   const goDiaryMain= (selDate) => {
     console.log("go diary");
-    let formatDate = moment(selDate).format('YYYY-MM-DD');
+    let formatDate = moment(selDate).format('YYYYMMDD');
     movePage('/diary', {
       state: {
-        selDate: formatDate,
-      }
+       selDate: formatDate,
+      } 
     });
   };
 
