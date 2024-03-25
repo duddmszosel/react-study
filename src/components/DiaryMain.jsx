@@ -6,16 +6,19 @@ import logo from "../assets/logo.png";
 import DiaryDisplay from "./DiaryDisplay";
 import { message } from "antd";
 import { useLocation } from 'react-router-dom';
-
+import isEmpty from "is-empty";
 
 
 
 function DiaryMain() {
   let diaryData = "";
   //달력에서 받아온 날짜 데이터
-  const diaryDataKey = useLocation().state.selDate;
+  const STORAGE_SAVE_KEY = 'DIARY_REACT_DATA';
+  const selDate = useLocation().state.selDate
+  const diaryDataKey = `diary ${selDate}`;
   console.log('selDate', diaryDataKey);
-  diaryData = localStorage.getItem(diaryDataKey) == null ? "" : JSON.parse(JSON.parse(localStorage.getItem(diaryDataKey)));
+  const totalDiaryData = localStorage.getItem(STORAGE_SAVE_KEY) == null ? [] : JSON.parse(localStorage.getItem(STORAGE_SAVE_KEY));
+  diaryData = totalDiaryData.find((o)=>{return o.selDate == selDate }) || {};
 
   const [data, setData] = useState(diaryData);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,9 +32,14 @@ function DiaryMain() {
         prompt: `${userInput}`,
       });
       console.log(JSON.parse(message));
+      //데이터에 날짜 저장
+      let msgObj = JSON.parse(message);
+      msgObj.selDate = selDate;
 
-      localStorage.setItem(selDate, JSON.stringify(message));
-      setData(JSON.parse(message));
+      totalDiaryData.push(msgObj);
+
+      localStorage.setItem(STORAGE_SAVE_KEY, JSON.stringify(totalDiaryData));
+      setData(msgObj);
     } catch (error) {
       console.log(error);
       messageApi.open({
@@ -54,9 +62,9 @@ function DiaryMain() {
         <AppTitle>
           심리상담사 GPT, AI 회고록 <img width={"100px"} src={logo}></img>
         </AppTitle>
-        <DiaryInput messageApi={messageApi} isLoading={isLoading} onSubmit={handleSubmit}/>
+        <DiaryInput disabeld={isEmpty(diaryData)} messageApi={messageApi} isLoading={isLoading} onSubmit={handleSubmit}/>
         <div id="capture">
-          {data === "" ? "" : <DiaryDisplay isLoading={isLoading} data={data} />}
+          {isEmpty(data) ? '' : <DiaryDisplay isLoading={isLoading} data={data} />}
         </div>
     </AppConatiner>
   );

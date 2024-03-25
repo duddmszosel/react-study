@@ -18,6 +18,7 @@ import {
 } from "@ant-design/icons";
 import { Image } from "antd";
 import styled from "styled-components";
+import isEmpty from "is-empty";
 
 const ThumbnailImage = styled(Image)`
   max-width: 100%;
@@ -88,7 +89,7 @@ const DiaryDisplay = ({ data, isLoading }) => {
           GPT 조언
         </CardTitle>
         <CardContent>
-          {data === "" ? "" : data.action_list.map((action, index) => (
+          {isEmpty(data) ? "" : data.action_list.map((action, index) => (
             <ActionListItem key={index}>{action}</ActionListItem>
           ))}
           {/* <ActionListItem>{data.action_list[0]}</ActionListItem>

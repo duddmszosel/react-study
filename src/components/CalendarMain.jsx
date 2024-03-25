@@ -118,7 +118,7 @@ const StyledToday = styled.div`
   color: gray;
   font-weight: 600;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translateX(-50%);
 `;
@@ -134,10 +134,12 @@ const StyledDot = styled.div`
   transform: translateX(-50%);
 `;
 
-const attendDay = ["2024-03-03", "2024-03-13"]; // 출석한 날짜 예시
-
-
 function CalendarMain() {
+  const STORAGE_SAVE_KEY = 'DIARY_REACT_DATA';
+  const totalDiaryData = localStorage.getItem(STORAGE_SAVE_KEY) == null ? [] : JSON.parse(localStorage.getItem(STORAGE_SAVE_KEY));
+  console.log(totalDiaryData);
+  const attendDay = totalDiaryData.length > 0 ? totalDiaryData.map((o)=>{return o.selDate}) : [];
+
   const today = new Date();
   const [date, setDate] = useState(new Date());
   
@@ -177,9 +179,9 @@ function CalendarMain() {
             html.push(<StyledToday key={"today"}>오늘</StyledToday>);
           }
           if (
-            attendDay.find((x) => x === moment(date).format("YYYY-MM-DD"))
+            attendDay.find((x) => x === moment(date).format("YYYYMMDD"))
           ) {
-            html.push(<StyledDot key={moment(date).format("YYYY-MM-DD")} />);
+            html.push(<StyledDot key={moment(date).format("YYYYMMDD")} />);
           }
           return <>{html}</>;
         }}
