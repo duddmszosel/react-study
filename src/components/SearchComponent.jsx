@@ -41,7 +41,7 @@ const SearchComponent = () => {
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
 				/>
-				<button className="darkYellowBtn" onClick={handleSearch}>검색</button>
+				<button className="saveBtn" onClick={handleSearch}>검색</button>
 			</div>
 			<ul className='search-list'>
 				{results.map((result) => (
@@ -64,8 +64,8 @@ const SearchComponent = () => {
 								</div>
 							</div>
 							<div className='handler'>
-								<button onClick={() => handlePlayTrack(result.uri)}>재생</button>
-								<button onClick={() => { modalHandler(result, true) }}>선택</button>
+								<button className="play-btn" onClick={() => handlePlayTrack(result.uri)}>재생</button>
+								<button className="choice-btn" onClick={() => { modalHandler(result, true) }}>선택</button>
 							</div>
 						</article>
 					</li>
@@ -90,9 +90,8 @@ function Modal({ data, onCancel }) {
 	return (
 	<section className='modal'>
 		<div>
-			<h2>Confirm</h2>
-			<div>선택한 곡을 저장하시겠습니까?</div>
-			<div>
+			<div className="modal-title">선택한 곡을 저장하시겠습니까?</div>
+			<div className="modal-btn-area">
 				<button onClick={onSubmitHandler}>저장</button>
 				<button onClick={() => { onCancel({}, false) }}>취소</button>
 			</div>

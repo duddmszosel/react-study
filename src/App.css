@@ -95,7 +95,7 @@ body{
   display: flex;
   flex-direction: column;
   gap: 12px;
-  height: 100vh;
+  min-height: 100vh;
   padding : 20px;
   flex-direction: column;
   max-width: 720px;
@@ -143,7 +143,7 @@ header button {
   gap: 8px;
   padding: 4px;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .search-box input {
@@ -156,6 +156,7 @@ header button {
   border: 0;
   height: 36px;
   color: #fff;
+  /*border-bottom : 1px solid;*/
 }
 
 button {
@@ -168,11 +169,14 @@ button {
 }
 
 .search-box button {
-  padding: 4px 8px;
+  padding: 7px 12px;
   /*color: #fff;*/
   /*border-radius: 8px;*/
   /*border: 0.5px solid black;*/
   /*background: none;*/
+  min-width: 4rem;
+  font-family: "GowunDodum-Regular";
+  font-size: 15px;
 }
 
 .search-list {
@@ -183,8 +187,9 @@ button {
 }
 
 .search-items {
-  padding: 0 12px;
+  padding: 12px 4px;
   list-style: none;
+  border-bottom : 1px solid #fff;
 }
 
 .search-items article {
@@ -210,11 +215,60 @@ button {
   display: flex;
   gap: 4px;
 }
+.search-items .handler button{
+  min-height: 32px;
+  min-width: 3.9rem;
+  font-family: "GowunDodum-Regular";
+  font-size: 14px;
+
+}
+.play-btn{
+  background-color: #101c2d;
+  padding: 8px 12px;
+  /*border: 1px solid #fff;*/
+  margin-right: 10px;
+  box-shadow: 0 0 0.4vw 0.1vw #f6de97, 0 0 0.2vw 0.1vw #f8de9f, 0 0 0.6vw 0.1vw #ffcc81, inset 0 0 0vw 0vw #ffcc81, inset 0 0 0vw 0vw #f8de9f, inset 0 0 0.1vw 0vw #f6de97;
+  border: 0;
+  color: #fff4d3;
+}
+.choice-btn{
+  padding: 8px 12px;
+  box-shadow: 0 0 0.4vw 0.1vw #f2a92a, 0 0 0.2vw 0.1vw #f8de9f, 0 0 0.6vw 0.1vw #ffcc81, inset 0 0 0vw 0vw #ffcc81, inset 0 0 0vw 0vw #f8de9f, inset 0 0 0.1vw 0vw #f6de97;
+  border: 0;
+  color: #ffc154;
+  background-color: #101c2d;
+}
+.play-btn:hover{
+  color: #fff4d3 !important;
+  background-color: #101c2d!important;
+  /*border: 1px solid #f6de97!important;*/
+  box-shadow:
+          0 0 0.6vw 0.1vw #f6de97,
+          0 0 0.5vw 0.1vw #f8de9f,
+          0 0 0.9vw 0.1vw #ffcc81,
+          inset 0 0 0vw 0vw #ffcc81,
+          inset 0 0 0vw 0vw #f8de9f,
+          inset 0 0 0.1vw 0vw #f6de97;
+}
+.choice-btn:hover{
+  padding: 8px 12px;
+  box-shadow:
+          0 0 0.6vw 0.1vw #f2a92a,
+          0 0 0.5vw 0.1vw #f8de9f,
+          0 0 0.9vw 0.1vw #ffcc81,
+          inset 0 0 0vw 0vw #ffcc81,
+          inset 0 0 0vw 0vw #f8de9f,
+          inset 0 0 0.1vw 0vw #f6de97;
+  border: 0 !important;
+  color: #ffc154 !important;
+  background-color: #101c2d !important;
+}
 
 .player {
   position: fixed;
   width: 100%;
   bottom: 0;
+  left: 0;
 }
 
 .player iframe {
@@ -224,14 +278,15 @@ button {
 .modal {
   position: fixed;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: rgba(0, 0, 0, 0.733); */
-  background: white;
+   background: rgba(0, 0, 0, 0.733);
+
+
 }
 
 .modal > div {
@@ -243,9 +298,19 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: white;
-  border: 1px solid black;
   border-radius: 8px;
+  background-color: #091324;
+  border: 1px solid #fff;
+}
+.modal-title{
+}
+.modal-btn-area{
+  margin-top: 30px;
+}
+.modal-btn-area button{
+  border: 1px solid #fff;
+  padding: 8px 12px;
+  margin: 10px;
 }
 
 .lQwBK .react-calendar{
@@ -253,37 +318,64 @@ button {
 }
 
 .yellowBtn{
-  color: #101c2d;
-  background-color: #f6de97;
-  border: 1px solid #f6de97;
+  background-color: #101c2d;
+  padding: 8px 12px;
+  /* border: 1px solid #fff; */
+  margin-right: 10px;
+  box-shadow:
+          0 0 0.4vw 0.1vw #f6de97,
+          0 0 0.2vw 0.1vw #f8de9f,
+          0 0 0.6vw 0.1vw #ffcc81,
+          inset 0 0 0vw 0vw #ffcc81,
+          inset 0 0 0vw 0vw #f8de9f,
+          inset 0 0 0.1vw 0vw #f6de97;
+  border: 0;
+  color: #fff4d3;
+  height: 36px;
+  margin-right: 14px;
 }
 .darkYellowBtn{
-  color: #101c2d;
-  background-color: #e4af2f;
-  border: 1px solid #e4af2f;
+  padding: 8px 12px;
+  box-shadow: 0 0 0.4vw 0.1vw #f2a92a, 0 0 0.2vw 0.1vw #f8de9f, 0 0 0.6vw 0.1vw #ffcc81, inset 0 0 0vw 0vw #ffcc81, inset 0 0 0vw 0vw #f8de9f, inset 0 0 0.1vw 0vw #f6de97;
+  border: 0;
+  color: #ffc154;
+  background-color: #101c2d;
+  height: 36px;
+  margin-right: 14px;
 }
 .saveBtn{
   color: #101c2d;
   background-color: #e39101;
   border: 1px solid #e39101;
   min-width: 4rem;
+  height: 38px;
+
 }
 
 .yellowBtn:hover{
-  color: #101c2d !important;
-  background-color: #f6de97!important;
-  border: 1px solid #f6de97!important;
+  color: #fff4d3 !important;
+  background-color: #101c2d!important;
+  /*border: 1px solid #f6de97!important;*/
   box-shadow:
-          /*0 0 0.1vw 0.1vw #fbce61,*/
-          0 0 0.3vw 0.1vw #ffcc81;
+          0 0 0.6vw 0.1vw #f6de97,
+          0 0 0.5vw 0.1vw #f8de9f,
+          0 0 0.9vw 0.1vw #ffcc81,
+          inset 0 0 0vw 0vw #ffcc81,
+          inset 0 0 0vw 0vw #f8de9f,
+          inset 0 0 0.1vw 0vw #f6de97;
 }
 .darkYellowBtn:hover{
-  color: #101c2d !important;
-  background-color: #e4af2f !important;
-  border: 1px solid #e4af2f !important;
+  padding: 8px 12px;
   box-shadow:
-          /*0 0 0.1vw 0.1vw #fbce61,*/
-          0 0 0.3vw 0.1vw #ffcc81;
+          0 0 0.6vw 0.1vw #f2a92a,
+          0 0 0.5vw 0.1vw #f8de9f,
+          0 0 0.9vw 0.1vw #ffcc81,
+          inset 0 0 0vw 0vw #ffcc81,
+          inset 0 0 0vw 0vw #f8de9f,
+          inset 0 0 0.1vw 0vw #f6de97;
+  border: 0 !important;
+  color: #ffc154 !important;
+  background-color: #101c2d !important;
 }
 .saveBtn:hover{
   color: #101c2d !important;
