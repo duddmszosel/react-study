@@ -109,9 +109,9 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
       />
       
       <ButtonContainer>
-        <Button onClick={selectMusic}>노래 선택</Button>
-        <Button loading={isLoading} onClick={handleClick}>GPT 회고록을 작성해줘!</Button>
-        <Button disabled={disabeld} icon={<FileImageOutlined />}loading={isLoading} onClick={captureAndDownload}>저장 </Button>
+        <Button className="yellowBtn" onClick={selectMusic}>노래 선택</Button>
+        <Button className="darkYellowBtn" loading={isLoading} onClick={handleClick}>GPT 회고록을 작성해줘!</Button>
+        <Button className="saveBtn" disabled={disabeld} loading={isLoading} onClick={captureAndDownload}>저장 </Button>
       </ButtonContainer>
       
       <canvas id="canvas" style={{ display: "none" }}></canvas>
@@ -127,4 +127,5 @@ const ButtonContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-end;
   gap: 5px;
+  margin-right: 0;
 `;

@@ -35,14 +35,14 @@ const SearchComponent = () => {
 
 	return (
 		<div>
-			<header className='search-box'>
+			<div className='search-box'>
 				<input
 					type="text"
 					value={query}
 					onChange={(e) => setQuery(e.target.value)}
 				/>
-				<button onClick={handleSearch}>검색</button>
-			</header>
+				<button className="darkYellowBtn" onClick={handleSearch}>검색</button>
+			</div>
 			<ul className='search-list'>
 				{results.map((result) => (
 					<li className='search-items' key={result.id}>

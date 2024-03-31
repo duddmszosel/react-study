@@ -1,5 +1,6 @@
 // src/components/SpotifyLogin.js
 import { useEffect, useState } from 'react';
+import logo from '../img/icon_star.png';
 
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 
@@ -31,6 +32,10 @@ function SpotifyLogin() {
         '%20',
         )}&show_dialog=false`;
         window.location.href = authUrl;
+        const hash = window.location.hash;
+        const token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1];
+        window.location.hash = "";
+        window.localStorage.setItem("token", token);
     };
 
     const logout = () => {
@@ -45,7 +50,9 @@ function SpotifyLogin() {
 
     return (
         <header>
-            <h2>React Study</h2>
+                <img src={logo} alt=""/>
+
+            <h3>감성일기장</h3>
             {
                 token.length > 0 ?
                 <button onClick={logout}>logout</button> :

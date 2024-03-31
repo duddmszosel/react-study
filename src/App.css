@@ -1,9 +1,43 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@font-face {
+  font-family: "GowunDodum-Regular";
+  font-weight: normal;
+  src: url("./GowunDodum-Regular.ttf") format("truetype");
 }
+@font-face {
+  font-family: "GowunBatang-Regular";
+  src: url("./GowunBatang-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GowunBatang-Bold";
+  src: url("./GowunBatang-Bold.ttf") format("truetype");
+}
+body{
+  font-family: "GowunDodum-Regular";
+  color : #fff
+}
+
+#root {
+  /*max-width: 1280px;*/
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  background-color: rgb(17,28,45);
+  position: relative;
+  z-index: 10;
+
+}
+/*#root:before{*/
+/*  content: "";*/
+/*  background-image: url('./img/background.jpg');*/
+/*  background-size:cover;*/
+/*  opacity:0.5;*/
+/*  position:absolute;*/
+/*  top:0px;*/
+/*  left:0px;*/
+/*  right:0px;*/
+/*  bottom:0px;*/
+/*}*/
 
 .logo {
   height: 6em;
@@ -44,6 +78,8 @@
 
 
 
+
+
 /* body {
   background: #000000;
   color : white;
@@ -59,15 +95,45 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  height: 100vh;
+  padding : 20px;
+  flex-direction: column;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
 }
 header {
   display: flex;
-  justify-content: space-between;
-  padding: 4px;
+  padding: 15px;
+  background-color: #091324;
+  color:#fff;
+  /*border-bottom: 3px solid transparent;*/
+  /*border-image: linear-gradient(243deg, rgba(255,244,101,1) 0%, rgba(255,189,50,1) 27%, rgba(255,244,101,1) 54%, rgba(255,201,49,1) 76%, rgba(255,242,63,1) 100%);*/
+  /*border-image-slice: 1;*/
+}
+header h3{
+  font-size:1.4rem;
+  padding-left: 8px;
+}
+header img{
+  width: 25px;
+  height: 25px;
+  margin-top:4px;
+
+}
+.neonLine{
+  height: 0px;
+  box-shadow:
+          inset 0 0 0.1vw 0.1vw #f6de97,
+          0 0 0.1vw 0.1vw #f8de9f,
+          0 0 1vw 0.1vw #ffcc81,
+          inset 0 0 0.1vw 0.2vw #ffcc81,
+          inset 0 0 0.3vw 0.3vw #f8de9f,
+          inset 0 0 0.1vw 0.3vw #f6de97
 }
 
 header button {
-  color : black;
+  color : #00092B;
   background: none;
   border: 0;
   cursor: pointer;
@@ -77,18 +143,24 @@ header button {
   gap: 8px;
   padding: 4px;
   margin-bottom: 1rem;
+  padding: 1rem;
 }
 
-.search-box input { 
+.search-box input {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
   outline: none;
+  box-shadow: 0 0 0.4vw 0.1vw #f6de97, 0 0 0.2vw 0.1vw #f8de9f, 0 0 0.6vw 0.1vw #ffcc81, inset 0 0 0vw 0vw #ffcc81, inset 0 0 0vw 0vw #f8de9f, inset 0 0 0.1vw 0vw #f6de97;
+  background-color: #101c2d;
+  border: 0;
+  height: 36px;
+  color: #fff;
 }
 
 button {
   padding: 4px 8px;
-  color: black;
+  color: #fff;
   border-radius: 8px;
   border: 0.5px solid black;
   background: none;
@@ -97,10 +169,10 @@ button {
 
 .search-box button {
   padding: 4px 8px;
-  color: black;
-  border-radius: 8px;
-  border: 0.5px solid black;
-  background: none;
+  /*color: #fff;*/
+  /*border-radius: 8px;*/
+  /*border: 0.5px solid black;*/
+  /*background: none;*/
 }
 
 .search-list {
@@ -174,4 +246,57 @@ button {
   background: white;
   border: 1px solid black;
   border-radius: 8px;
+}
+
+.lQwBK .react-calendar{
+  padding: 0 !important;
+}
+
+.yellowBtn{
+  color: #101c2d;
+  background-color: #f6de97;
+  border: 1px solid #f6de97;
+}
+.darkYellowBtn{
+  color: #101c2d;
+  background-color: #e4af2f;
+  border: 1px solid #e4af2f;
+}
+.saveBtn{
+  color: #101c2d;
+  background-color: #e39101;
+  border: 1px solid #e39101;
+  min-width: 4rem;
+}
+
+.yellowBtn:hover{
+  color: #101c2d !important;
+  background-color: #f6de97!important;
+  border: 1px solid #f6de97!important;
+  box-shadow:
+          /*0 0 0.1vw 0.1vw #fbce61,*/
+          0 0 0.3vw 0.1vw #ffcc81;
+}
+.darkYellowBtn:hover{
+  color: #101c2d !important;
+  background-color: #e4af2f !important;
+  border: 1px solid #e4af2f !important;
+  box-shadow:
+          /*0 0 0.1vw 0.1vw #fbce61,*/
+          0 0 0.3vw 0.1vw #ffcc81;
+}
+.saveBtn:hover{
+  color: #101c2d !important;
+  background-color: #e39101 !important;
+  border: 1px solid #e39101 !important;
+  min-width: 4rem;
+  box-shadow:
+    /*0 0 0.1vw 0.1vw #fbce61,*/
+          0 0 0.3vw 0.1vw #ffcc81;
+}
+
+
+
+Button span{
+  font-family: GowunDodum-Regular;
 }

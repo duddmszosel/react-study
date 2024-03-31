@@ -83,8 +83,8 @@ const AppConatiner = styled.div`
 
 const AppTitle = styled.div`
   width: 100%;
-  font-weight: 400;
+  //font-weight: 400;
   font-size: 35px;
   text-align: center;
-  font-family: "Noto Serif KR";
+  //font-family: "GowunBatang-Bold";
 `;

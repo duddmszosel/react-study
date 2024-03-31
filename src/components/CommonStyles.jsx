@@ -21,16 +21,20 @@ export const DiaryContainer = styled.div`
 export const CardContainer = styled.div`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 20px;
-  border-radius: 2px;
+  border-radius: 10px;
   margin: 10px 0px;
+    background-color: #101c2d;
+    border :1px solid #fff;
 `;
 export const CardTitle = styled.div`
   margin: 6px;
-  color: #6b6b6b;
+  color: #fff;
   font-size: 22px;
   margin-bottom: 20px;
 `;
-export const CardContent = styled.div``;
+export const CardContent = styled.div`
+    color:#fff;
+`;
 export const ActionList = styled.ul`
   font-size: 16px;
 `;
