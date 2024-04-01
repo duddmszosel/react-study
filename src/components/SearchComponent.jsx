@@ -57,9 +57,9 @@ const SearchComponent = () => {
 									)}
 								</div>
 								<div className='text'>
-									<div><strong>{result.name}</strong></div>
+									<div className="music-title">{result.name}</div>
 									<div>
-										{result.artists.map((artist) => <div key={artist.id}>{artist.name}</div>)}
+										{result.artists.map((artist) => <div className="artists" key={artist.id}>{artist.name}</div>)}
 									</div>
 								</div>
 							</div>

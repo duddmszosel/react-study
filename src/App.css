@@ -211,6 +211,16 @@ button {
   gap: 12px;
 }
 
+.search-items .content div{
+  text-align: left;
+}
+.music-title{
+  font-size: 18px;
+}
+.artists{
+  font-size: 12px;
+}
+
 .search-items .handler {
   display: flex;
   gap: 4px;
