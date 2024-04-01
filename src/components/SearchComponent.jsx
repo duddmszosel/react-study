@@ -22,6 +22,7 @@ const SearchComponent = () => {
 	};
 
 	const handlePlayTrack = async (uri) => {
+		console.log(uri);
 		const token = localStorage.getItem("token");
 		setAccessToken(token);
 		setSelectedTrack(uri);

@@ -354,9 +354,9 @@ button {
   margin-right: 14px;
 }
 .saveBtn{
-  color: #101c2d;
-  background-color: #e39101;
-  border: 1px solid #e39101;
+  color: #101c2d !important;
+  background-color: #e39101 !important;
+  border: 1px solid #e39101 !important;
   min-width: 4rem;
   height: 38px;
 
