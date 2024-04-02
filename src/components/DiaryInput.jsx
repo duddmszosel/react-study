@@ -4,13 +4,14 @@ import { Title } from "./CommonStyles";
 import styled from "styled-components";
 import { FileImageOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 
 import html2canvas from "html2canvas";
 
 const { TextArea } = Input;
 
-const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
+const DiaryInput = ({ selDate, isLoading, onSubmit, messageApi, disabeld }) => {
   const [userInput, setUserInput] = useState("");
   const movePage = useNavigate();
   // 사용자의 입력을 받아, 상위컴포넌트로 데이터를 전달
@@ -99,7 +100,7 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
 
   return (
     <div>
-      <Title>오늘의 일</Title>
+      <Title>{moment(selDate).format('MM.DD')} 오늘의 일</Title>
       
       <TextArea
         value={userInput}

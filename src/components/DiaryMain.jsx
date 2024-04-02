@@ -62,7 +62,7 @@ function DiaryMain() {
         <AppTitle>
           심리상담사 GPT, AI 회고록 <img width={"100px"} src={logo}></img>
         </AppTitle>
-        <DiaryInput disabeld={isEmpty(diaryData)} messageApi={messageApi} isLoading={isLoading} onSubmit={handleSubmit}/>
+        <DiaryInput selDate={selDate} disabeld={isEmpty(diaryData)} messageApi={messageApi} isLoading={isLoading} onSubmit={handleSubmit}/>
         <div id="capture">
           {isEmpty(data) ? '' : <DiaryDisplay isLoading={isLoading} data={data} />}
         </div>

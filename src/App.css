@@ -14,7 +14,9 @@
 }
 body{
   font-family: "GowunDodum-Regular";
-  color : #fff
+  color : #fff;
+  min-height: 100vh;
+  background-color: rgb(17,28,45);
 }
 
 #root {
@@ -26,6 +28,18 @@ body{
   position: relative;
   z-index: 10;
 
+}
+#root::after{
+  content: "";
+  background-image: url('./img/background.jpg');
+  background-size:contain;
+  opacity:0.1;
+  position:absolute;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  z-index: -999;
 }
 /*#root:before{*/
 /*  content: "";*/
