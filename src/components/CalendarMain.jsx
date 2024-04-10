@@ -52,18 +52,16 @@ const StyledCalendarWrapper = styled.div`
         //font-weight: 800;
         font-size: 1.1rem;
     }
-
-    /* 네비게이션 버튼 컬러 */
-
-    .react-calendar__navigation button:focus {
-        background-color: white;
+    .react-calendar__navigation button:hover,
+    .react-calendar__navigation button:focus{
+      background-color: #091324;
+        //border-radius: 0.3rem;
+        color: #ffefc0;
+        text-shadow: 0 0 10px rgb(255 188 0);
     }
 
-    /* 네비게이션 비활성화 됐을때 스타일 */
-
     .react-calendar__navigation button:disabled {
-        background-color: white;
-        color: black;
+      background-color: transparent;
     }
 
     /* 년/월 상단 네비게이션 칸 크기 줄이기 */
@@ -119,14 +117,6 @@ const StyledCalendarWrapper = styled.div`
         }
     }
 
-    /* 네비게이션 월 스타일 적용 */
-
-    .react-calendar__year-view__months__month {
-        border-radius: 0.8rem;
-        background-color: gray;
-        padding: 0;
-    }
-
     /* 일 날짜 간격 */
 
     .react-calendar__tile {
@@ -150,7 +140,7 @@ const StyledCalendarWrapper = styled.div`
         padding: 20px 6.6667px;
         font-size: 0.9rem;
         font-weight: 600;
-        background: white;
+        border-radius: 0.8rem;
     }
 
     /* 선택한 날짜 스타일 적용 */
