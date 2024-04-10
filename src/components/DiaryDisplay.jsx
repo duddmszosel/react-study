@@ -19,6 +19,8 @@ import {
 import { Image } from "antd";
 import styled from "styled-components";
 import isEmpty from "is-empty";
+import SpotifyPlayerComponent from './SpotifyPlayer';
+import React, {useState} from "react";
 
 const ThumbnailImage = styled(Image)`
   max-width: 100%;
@@ -27,9 +29,12 @@ const ThumbnailImage = styled(Image)`
 `;
 
 const DiaryDisplay = ({ data, isLoading }) => {
-  console.log(data);
+
   return (
     <DiaryContainer>
+        {!isEmpty(data.musicData) && (
+            <SpotifyPlayerComponent token={localStorage.getItem("token")} uris={[data.musicData.uri]} />
+        )}
       {isLoading && (
         <>
           불러오는중...

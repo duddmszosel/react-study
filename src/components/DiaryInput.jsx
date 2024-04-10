@@ -1,13 +1,12 @@
 import { Input, Button, message } from "antd";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Title } from "./CommonStyles";
 import styled from "styled-components";
 import { FileImageOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 import html2canvas from "html2canvas";
-
 const { TextArea } = Input;
 
 const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
@@ -22,10 +21,12 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
 
   const selectMusic = () => {
     console.log("search music");
-    movePage('/search');
+    console.log(userInput);
+    movePage('/search',  {state : userInput});
   };
 
   const handleClick = () => {
+    console.log(userInput);
     if (!userInput) {
       messageApi.open({
         type: "error",
@@ -41,6 +42,26 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
     onSubmit(userInput);
     setUserInput(null);
   };
+  const {textArea} = useLocation();
+  const [text, setText] = useState('');
+  // useEffect(() => {
+    useEffect(() => {
+      if(localStorage.getItem('textData').length > 0){
+        setUserInput(localStorage.getItem('textData'));
+        localStorage.setItem('textData', '');
+      }
+
+      const handleBeforeUnload = (event) => {
+        event.preventDefault();
+        event.returnValue = '';
+      };
+
+      window.addEventListener('beforeunload', handleBeforeUnload);
+
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+      };
+    }, [text]);
 
   const captureAndDownload = async () => {
     const nodeToCapture = document.getElementById("capture");
@@ -58,31 +79,9 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
       a.href = image;
       a.download = "gpt-diary-result.png";
       a.click();
+      history.back();
     });
 
-    // // HTML 요소를 가져옵니다.
-    // const elementToCapture = document.getElementById("capture");
-    // const { cropPositionTop, cropPositionLeft, cropWidth, cropHeigth } = {
-    //   cropPositionTop: 0,
-    //   cropPositionLeft: 0,
-    //   cropWidth: elementToCapture.offsetWidth,
-    //   cropHeigth: elementToCapture.offsetHeight,
-    // };
-
-    // html2canvas(elementToCapture).then((canvas) => {
-    //   let croppedCanvas = document.createElement("canvas");
-    //   let croppedCanvasContext = croppedCanvas.getContext("2d");
-
-    //   croppedCanvas.width = cropWidth;
-    //   croppedCanvas.height = cropHeigth;
-
-    //   croppedCanvasContext.drawImage(canvas, cropPositionLeft, cropPositionTop);
-
-    //   const a = document.createElement("a");
-    //   a.href = croppedCanvas.toDataURL();
-    //   a.download = "receipt.png";
-    //   a.click();
-    // });
   };
 
   /*
@@ -101,7 +100,7 @@ const DiaryInput = ({ isLoading, onSubmit, messageApi, disabeld }) => {
     <div>
       <Title>오늘의 일</Title>
       
-      <TextArea
+      <TextArea className="textArea"
         value={userInput}
         onChange={handleUserInput}
         placeholder="오늘 일어난 일들을 간단히 적어주세요."

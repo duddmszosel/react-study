@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { CallGPT } from "../api/gpt";
 import DiaryInput from "./DiaryInput";
 import styled from "styled-components";
@@ -7,6 +7,8 @@ import DiaryDisplay from "./DiaryDisplay";
 import { message } from "antd";
 import { useLocation } from 'react-router-dom';
 import isEmpty from "is-empty";
+import SearchComponent from "./SearchComponent";
+import SpotifyPlayerComponent from "./SpotifyPlayer.jsx";
 
 
 
@@ -14,27 +16,37 @@ function DiaryMain() {
   let diaryData = "";
   //달력에서 받아온 날짜 데이터
   const STORAGE_SAVE_KEY = 'DIARY_REACT_DATA';
-  const selDate = useLocation().state.selDate
+  const selDate = useLocation().state.selDate;
   const diaryDataKey = `diary ${selDate}`;
   console.log('selDate', diaryDataKey);
   const totalDiaryData = localStorage.getItem(STORAGE_SAVE_KEY) == null ? [] : JSON.parse(localStorage.getItem(STORAGE_SAVE_KEY));
   diaryData = totalDiaryData.find((o)=>{return o.selDate == selDate }) || {};
-
+  console.log(diaryData);
   const [data, setData] = useState(diaryData);
   const [isLoading, setIsLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const musicData = {};
+  const handlePlayTrack = async (uri) => {
+
+  };
 
   const handleClickAPICall = async (userInput) => {
     console.log(userInput);
     try {
       setIsLoading(true);
       const message = await CallGPT({
-        prompt: `${userInput}`,
+        prompt: userInput,
       });
       console.log(JSON.parse(message));
+        const musicData = !isEmpty(localStorage.getItem('musicData')) ? JSON.parse(localStorage.getItem('musicData')) : {};
+      localStorage.setItem('musicData', {});
+        console.log(musicData);
+      // }
       //데이터에 날짜 저장
       let msgObj = JSON.parse(message);
       msgObj.selDate = selDate;
+      msgObj.musicData = musicData;
+      // msgOBj.
 
       totalDiaryData.push(msgObj);
 
@@ -52,9 +64,27 @@ function DiaryMain() {
     }
   };
 
+
   const handleSubmit = (userInput) => {
     handleClickAPICall(userInput);
   };
+
+  useEffect(() => {
+
+
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
+
 
   return (
     <AppConatiner>
@@ -66,6 +96,7 @@ function DiaryMain() {
         <div id="capture">
           {isEmpty(data) ? '' : <DiaryDisplay isLoading={isLoading} data={data} />}
         </div>
+
     </AppConatiner>
   );
 }
