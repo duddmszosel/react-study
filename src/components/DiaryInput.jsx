@@ -4,7 +4,6 @@ import { Title } from "./CommonStyles";
 import styled from "styled-components";
 import { FileImageOutlined } from "@ant-design/icons";
 import {useLocation, useNavigate} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
 
@@ -48,7 +47,7 @@ const DiaryInput = ({ selDate, isLoading, onSubmit, messageApi, disabeld }) => {
   const [text, setText] = useState('');
   // useEffect(() => {
     useEffect(() => {
-      if(localStorage.getItem('textData').length > 0){
+      if(localStorage.getItem('textData') != null && localStorage.getItem('textData').length > 0){
         setUserInput(localStorage.getItem('textData'));
         localStorage.setItem('textData', '');
       }
