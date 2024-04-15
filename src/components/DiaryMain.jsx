@@ -39,7 +39,7 @@ function DiaryMain() {
       });
       console.log(JSON.parse(message));
         const musicData = !isEmpty(localStorage.getItem('musicData')) ? JSON.parse(localStorage.getItem('musicData')) : {};
-      localStorage.setItem('musicData', {});
+      localStorage.setItem('musicData', '{}');
         console.log(musicData);
       // }
       //데이터에 날짜 저장
@@ -104,7 +104,7 @@ function DiaryMain() {
 export default DiaryMain;
 
 const AppConatiner = styled.div`
-  padding: 20px;
+  padding: 20px 20px 120px 20px;
   display: flex;
   flex-direction: column;
   max-width: 720px;
